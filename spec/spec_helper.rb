@@ -43,7 +43,7 @@ RSpec.shared_context 'integration specs', :integration do
   let(:api) { Stretchy.query(index: SPEC_INDEX, type: FIXTURE_TYPE) }
   let(:found) { FIXTURES[:sakurai] }
   let(:not_found) { FIXTURES[:mizuguchi] }
-  # let(:extra) { FIXTURES[:suda] }
+  let(:extra) { FIXTURES[:suda] }
 
   subject { api }
 

@@ -9,27 +9,27 @@ describe 'Queries', :integration do
     specify 'string query' do
       check_query subject.match('sakurai')
     end
-    #
-    # specify 'hash query' do
-    #   check_query subject.match(name: 'sakurai')
-    # end
-    #
-    # specify 'array match query' do
-    #   companies = [found['company'], extra['company']]
-    #   check_query subject.match(company: companies)
-    # end
-    #
-    # describe 'nested hash queries' do
-    #   specify 'dotted hash match query' do
-    #     check_query subject.match(games: {likes: {user: 'stacy'}})
-    #   end
 
-      # specify 'nested hash match query' do
-      #   check_query subject.match(nested: true,
-      #     games: {comments: {comment: 'formed'}}
-      #   )
-      # end
-  #   end
+    specify 'hash query' do
+      check_query subject.match(name: 'sakurai')
+    end
+
+    specify 'array match query' do
+      companies = [found['company'], extra['company']]
+      check_query subject.match(company: companies)
+    end
+
+    describe 'nested hash queries' do
+      specify 'dotted hash match query' do
+        check_query subject.match(games: {likes: {user: 'stacy'}})
+      end
+
+      specify 'nested hash match query' do
+        check_query subject.match(nested: true,
+          games: {comments: {comment: 'formed'}}
+        )
+      end
+    end
   end
 
   # specify 'basic query' do

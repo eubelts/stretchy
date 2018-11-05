@@ -224,14 +224,14 @@ module Stretchy
       #   ))
       # end
 
-      # def add_context(*args)
-      #   self.class.new(opts.merge(
-      #     nodes:   collector.nodes,
-      #     root:    root,
-      #     body:    body,
-      #     context: context.merge(args_to_context(*args))
-      #   ))
-      # end
+      def add_context(*args)
+        self.class.new(opts.merge(
+          nodes:   collector.nodes,
+          root:    root,
+          body:    body,
+          context: context.merge(args_to_context(*args))
+        ))
+      end
 
   end
 end

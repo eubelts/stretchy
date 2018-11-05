@@ -52,7 +52,7 @@ module Stretchy
           query_nodes.first
         end
       end
-      
+
       def multicontext?(node_arr)
         Array(node_arr).any? {|n| n.context?(:must_not) || n.context?(:should) }
       end
