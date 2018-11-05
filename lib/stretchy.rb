@@ -7,6 +7,8 @@ require 'stretchy/api'
 require 'stretchy/utils'
 require 'stretchy/version'
 require 'stretchy/and_collector'
+require 'stretchy/factory'
+require 'stretchy/node'
 
 module Stretchy
 
