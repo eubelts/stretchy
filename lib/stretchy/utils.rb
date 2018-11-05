@@ -44,18 +44,18 @@ module Stretchy
         id =~ /^\d+$/ ? id.to_i : id
       end
 
-      # def dotify(hash, prefixes = [])
-      #   hash.reduce({}) do |memo, kv|
-      #     key, val    = kv
-      #     subprefixes = (prefixes + [key])
-      #     prefix      = subprefixes.join('.')
-      #     if val.is_a? Hash
-      #       memo.merge(dotify(val, subprefixes))
-      #     else
-      #       memo.merge(prefix => val)
-      #     end
-      #   end
-      # end
+      def dotify(hash, prefixes = [])
+        hash.reduce({}) do |memo, kv|
+          key, val    = kv
+          subprefixes = (prefixes + [key])
+          prefix      = subprefixes.join('.')
+          if val.is_a? Hash
+            memo.merge(dotify(val, subprefixes))
+          else
+            memo.merge(prefix => val)
+          end
+        end
+      end
 
       # def nestify(hash, prefixes = [])
       #   hash.reduce({}) do |memo, kv|

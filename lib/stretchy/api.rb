@@ -85,15 +85,15 @@ module Stretchy
     #   add_params params, subcontext, :context_nodes
     # end
     #
-    # def match(params = {})
-    #   if params.is_a? Hash
-    #     subcontext = {query: true}
-    #     subcontext[:nested] = true if params.delete(:nested)
-    #     add_params params, subcontext, :context_nodes
-    #   else
-    #     add_params Hash[_all: params], :query, :context_nodes
-    #   end
-    # end
+    def match(params = {})
+      if params.is_a? Hash
+        subcontext = {query: true}
+        subcontext[:nested] = true if params.delete(:nested)
+        add_params params, subcontext, :context_nodes
+      else
+        add_params Hash[_all: params], :query, :context_nodes
+      end
+    end
     #
     # def more_like(params = {})
     #   params[:ids] = Array(params[:ids]) if params[:ids]

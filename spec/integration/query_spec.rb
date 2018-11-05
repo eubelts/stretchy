@@ -5,10 +5,10 @@ describe 'Queries', :integration do
     check_query subject.query(match: { name: "sakurai"})
   end
 
-  # describe 'match filters' do
-  #   specify 'string query' do
-  #     check_query subject.match('sakurai')
-  #   end
+  describe 'match filters' do
+    specify 'string query' do
+      check_query subject.match('sakurai')
+    end
     #
     # specify 'hash query' do
     #   check_query subject.match(name: 'sakurai')
@@ -30,7 +30,7 @@ describe 'Queries', :integration do
       #   )
       # end
   #   end
-  # end
+  end
 
   # specify 'basic query' do
   #   check_query subject.query(term: { url_slug: found['url_slug']})

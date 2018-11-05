@@ -30,14 +30,14 @@ module Stretchy
     #   Utils.extract_options!(params, FUNCTION_SCORE_OPTIONS)
     # end
     #
-    # def dotify_params(params, context)
-    #   if context[:nested]
-    #     Utils.nestify(params)
-    #   else
-    #     Utils.dotify(params)
-    #   end
-    # end
-    #
+    def dotify_params(params, context)
+      if context[:nested]
+        Utils.nestify(params)
+      else
+        Utils.dotify(params)
+      end
+    end
+
     def raw_node(params, context)
       if context[:boost]
         raw_boost_node(params, context)
@@ -55,15 +55,15 @@ module Stretchy
     #   Node.new(boost_params, context)
     # end
     #
-    # def context_nodes(params, context = default_context)
-    #   if context[:boost]
-    #     params_to_boost(params, context)
-    #   elsif context[:filter] && !context[:query]
-    #     params_to_filters(dotify_params(params, context), context)
-    #   else
-    #     params_to_queries(dotify_params(params, context), context)
-    #   end
-    # end
+    def context_nodes(params, context = default_context)
+      if context[:boost]
+        params_to_boost(params, context)
+      elsif context[:filter] && !context[:query]
+        params_to_filters(dotify_params(params, context), context)
+      else
+        params_to_queries(dotify_params(params, context), context)
+      end
+    end
     #
     # def params_to_boost(params, context = default_context)
     #   boost_params        = extract_boost_params!(params)
@@ -80,24 +80,24 @@ module Stretchy
     #   Node.new(boost_params, context)
     # end
     #
-    # def params_to_queries(params, context = default_context)
-    #   params.map do |field, val|
-    #     case val
-    #     when Array
-    #       Node.new({match: {
-    #         field => {query: val.join(' '), :operator => :or}
-    #       }}, context)
-    #     when Range
-    #       Node.new({range: {
-    #         field => {gte: val.min, lte: val.max}
-    #       }}, context)
-    #     when Hash
-    #       nested(val, field, context)
-    #     else
-    #       Node.new({match: {field => val}}, context)
-    #     end
-    #   end
-    # end
+    def params_to_queries(params, context = default_context)
+      params.map do |field, val|
+        case val
+        when Array
+          Node.new({match: {
+            field => {query: val.join(' '), :operator => :or}
+          }}, context)
+        when Range
+          Node.new({range: {
+            field => {gte: val.min, lte: val.max}
+          }}, context)
+        when Hash
+          nested(val, field, context)
+        else
+          Node.new({match: {field => val}}, context)
+        end
+      end
+    end
     #
     # def params_to_filters(params, context = default_context)
     #   params.map do |field, val|
