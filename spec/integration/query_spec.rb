@@ -58,7 +58,7 @@ describe 'Queries', :integration do
   specify 'range query' do
     check_query subject.query.range(salary: {gte: found['salary']})
   end
-  
+
   specify 'more_like' do
     check_query subject.more_like(
       like:             found['name'],
@@ -66,8 +66,8 @@ describe 'Queries', :integration do
       min_term_freq:    1
     )
   end
-  #
-  # specify 'fulltext query' do
-  #   check_query subject.fulltext(found['name'])
-  # end
+  
+  specify 'fulltext query' do
+    check_query subject.fulltext(found['name'])
+  end
 end

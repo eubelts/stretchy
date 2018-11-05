@@ -128,44 +128,44 @@ module Stretchy
         query:  json
       }}, context)
     end
-    #
-    # # https://www.elastic.co/guide/en/elasticsearch/guide/current/proximity-relevance.html
-    # def fulltext_nodes_from_string(params, context = default_context)
-    #   subcontext = context.merge(query: true)
-    #   nodes = [raw_node({
-    #     match: {
-    #       _all: {
-    #         query: params,
-    #         minimum_should_match: 1
-    #       }
-    #     }
-    #   }, subcontext)]
-    #
-    #   subcontext = subcontext.merge(should: true)
-    #   nodes << Factory.raw_node({
-    #     match_phrase: {
-    #       _all: {
-    #         query: params,
-    #         slop:  DEFAULT_SLOP
-    #       }
-    #     }
-    #   }, subcontext)
-    #
-    #   nodes
-    # end
-    #
-    # # https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html
-    # def more_like_node(params = {}, context = default_context)
-    #   Node.new({more_like_this: params}, context)
-    # end
-    #
+    
+    # https://www.elastic.co/guide/en/elasticsearch/guide/current/proximity-relevance.html
+    def fulltext_nodes_from_string(params, context = default_context)
+      subcontext = context.merge(query: true)
+      nodes = [raw_node({
+        match: {
+          _all: {
+            query: params,
+            minimum_should_match: 1
+          }
+        }
+      }, subcontext)]
+
+      subcontext = subcontext.merge(should: true)
+      nodes << Factory.raw_node({
+        match_phrase: {
+          _all: {
+            query: params,
+            slop:  DEFAULT_SLOP
+          }
+        }
+      }, subcontext)
+
+      nodes
+    end
+
+    # https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html
+    def more_like_node(params = {}, context = default_context)
+      Node.new({more_like_this: params}, context)
+    end
+
     # query and filter use the same syntax
     # https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html
     # https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-filter.html
     def range_node(params = {}, context = default_context)
       Node.new({range: params}, context)
     end
-    
+
     # # https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-geo-distance-filter.html
     # def geo_distance_node(params = {}, context = default_context)
     #   Node.new({geo_distance: params}, context)

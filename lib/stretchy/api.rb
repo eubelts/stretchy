@@ -94,19 +94,19 @@ module Stretchy
         add_params Hash[_all: params], :query, :context_nodes
       end
     end
-    #
-    # def more_like(params = {})
-    #   params[:ids] = Array(params[:ids]) if params[:ids]
-    #   add_params params, :query, :more_like_node
-    # end
-    #
-    # def fulltext(params = '')
-    #   unless params.is_a?(String)
-    #     raise Errors::InvalidParamsError.new('.fulltext only takes a string')
-    #   end
-    #   add_nodes Factory.fulltext_nodes_from_string(params, context)
-    # end
-    #
+
+    def more_like(params = {})
+      params[:ids] = Array(params[:ids]) if params[:ids]
+      add_params params, :query, :more_like_node
+    end
+
+    def fulltext(params = '')
+      unless params.is_a?(String)
+        raise Errors::InvalidParamsError.new('.fulltext only takes a string')
+      end
+      add_nodes Factory.fulltext_nodes_from_string(params, context)
+    end
+
     def query(params = {})
       add_params params, :query, :raw_node
     end
