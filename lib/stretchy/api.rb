@@ -159,19 +159,20 @@ module Stretchy
     #   add_params params, :boost, :decay_function_node
     # end
     #
-    # def request
-    #   @request ||= begin
-    #     root.merge(body: body.merge(query: collector.as_json))
-    #   end
-    # end
-    #
-    # def response
-    #   @response ||= Stretchy.search(request)
-    # end
-    #
-    # def results_obj
-    #   @results ||= Results.new request, response
-    # end
+    def request
+      binding.pry
+      @request ||= begin
+        root.merge(body: body.merge(query: collector.as_json))
+      end
+    end
+
+    def response
+      @response ||= Stretchy.search(request)
+    end
+
+    def results_obj
+      @results ||= Results.new request, response
+    end
     #
     # def count
     #   results_obj.ids.count
@@ -197,14 +198,14 @@ module Stretchy
         end
       end
 
-      # def add_nodes(additional)
-      #   self.class.new(opts.merge(
-      #     nodes: collector.nodes + Array(additional),
-      #     root:  root,
-      #     body:  body,
-      #     context: {}
-      #   ))
-      # end
+      def add_nodes(additional)
+        self.class.new(opts.merge(
+          nodes: collector.nodes + Array(additional),
+          root:  root,
+          body:  body,
+          context: {}
+        ))
+      end
 
       # def add_root(options = {})
       #   self.class.new(opts.merge(

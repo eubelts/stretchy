@@ -9,6 +9,7 @@ require 'stretchy/version'
 require 'stretchy/and_collector'
 require 'stretchy/factory'
 require 'stretchy/node'
+require 'stretchy/results'
 
 module Stretchy
 
