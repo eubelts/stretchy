@@ -1,0 +1,27 @@
+{
+  "game_dev" : {
+    "properties" : {
+      "coords" : {"type" : "geo_point"},
+      "url_slug" : {"type" : "keyword", "index" : "false"},
+      "games" : {
+        "type" : "nested",
+        "include_in_parent" : true,
+        "properties" : {
+          "comments" : {
+            "type" : "nested",
+            "properties" : {
+              "source" : {
+                "type" : "keyword",
+                "index" : "false"
+              }
+            }
+          },
+          "likes" : {
+            "type" : "nested",
+            "include_in_parent" : true
+          }
+        }
+      }
+    }
+  }
+}
