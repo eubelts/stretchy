@@ -54,18 +54,18 @@ describe 'Queries', :integration do
     # but .should affects the document score: more matchs == higher score
     expect(sakurai['_score']).to be > suda['_score']
   end
-  #
-  # specify 'range query' do
-  #   check_query subject.query.range(salary: {gte: found['salary']})
-  # end
-  # #
-  # specify 'more_like' do
-  #   check_query subject.more_like(
-  #     like:             found['name'],
-  #     min_doc_freq:     1,
-  #     min_term_freq:    1
-  #   )
-  # end
+
+  specify 'range query' do
+    check_query subject.query.range(salary: {gte: found['salary']})
+  end
+  
+  specify 'more_like' do
+    check_query subject.more_like(
+      like:             found['name'],
+      min_doc_freq:     1,
+      min_term_freq:    1
+    )
+  end
   #
   # specify 'fulltext query' do
   #   check_query subject.fulltext(found['name'])

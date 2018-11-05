@@ -159,13 +159,13 @@ module Stretchy
     #   Node.new({more_like_this: params}, context)
     # end
     #
-    # # query and filter use the same syntax
-    # # https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html
-    # # https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-filter.html
-    # def range_node(params = {}, context = default_context)
-    #   Node.new({range: params}, context)
-    # end
-    #
+    # query and filter use the same syntax
+    # https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html
+    # https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-filter.html
+    def range_node(params = {}, context = default_context)
+      Node.new({range: params}, context)
+    end
+    
     # # https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-geo-distance-filter.html
     # def geo_distance_node(params = {}, context = default_context)
     #   Node.new({geo_distance: params}, context)

@@ -123,10 +123,10 @@ module Stretchy
       add_params params, :must_not, :context_nodes
     end
 
-    # def range(params = {})
-    #   add_params params, nil, :range_node
-    # end
-    #
+    def range(params = {})
+      add_params params, nil, :range_node
+    end
+
     # def geo_distance(params = {})
     #   add_params params, nil, :geo_distance_node
     # end
