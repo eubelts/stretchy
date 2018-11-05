@@ -1,0 +1,52 @@
+
+{
+  "id" : 3,
+  "name" : "Tetsuya Mizuguchi",
+  "title" : "Game Musician",
+  "company" : "United Game Artists",
+  "url_slug" : "tetsuya-mizuguchi",
+  "salary" : 450000,
+  "is_sakurai" : false,
+  "is_mizuguchi" : true,
+  "first_game" : "2001-11-22T17:25:43.511Z",
+  "games" : [
+    {
+      "id" : 8,
+      "title" : "Rez",
+      "platforms" : ["Dreamcast"],
+       "comments" : [
+        {
+          "user_id" : 3,
+          "user_name" : "stacy",
+          "comment" : "this game rocks",
+          "source" : "web"
+        },
+        {
+          "user_id" : 7,
+          "user_name" : "ulysses",
+          "comment" : "what is this i am not good with computer",
+          "source" : "mobile"
+        }
+      ]
+    },
+    {
+      "id" : 9,
+      "title" : "Lumines",
+      "platforms" : ["PlayStation Portable", "PlayStation 3", "Xbox 360", "iOS"]
+    },
+    {
+      "id" : 10,
+      "title" : "Child of Eden",
+      "platforms" : ["Xbox 360", "PlayStation 3"],
+      "likes" : [
+        {"user_id" : 7, "user" : "ulysses"}
+      ]
+    }
+  ],
+  "location" : "Sendai, Japan",
+  "coords" : {
+    "lat" : 38.2667,
+    "lon" : 140.8667
+  },
+  "bio" : "Tetsuya Mizuguchi, born May 22, 1965 in Otaru, Hokkaido, Japan) is a video game designer and co-founder (along with ex-Sega developers) of the video game development firm Q Entertainment. He formerly worked for Sega as a producer in their Sega AM3 'arcade machines' team, developing games like Sega Rally and Sega Touring Car Championship, before moving on to become the head of Sega's United Game Artists division, the team responsible for the Rez and Space Channel 5. Mizuguchi is known for creating video games that incorporate a notable emphasis on interactive sound design, evidenced by Rez, Lumines, and Child of Eden."
+}

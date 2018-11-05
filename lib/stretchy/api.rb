@@ -160,7 +160,6 @@ module Stretchy
     # end
     #
     def request
-      binding.pry
       @request ||= begin
         root.merge(body: body.merge(query: collector.as_json))
       end

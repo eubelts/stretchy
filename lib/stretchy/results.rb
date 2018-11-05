@@ -74,9 +74,9 @@ module Stretchy
     # alias :hits :results
     # alias :to_a :results
     #
-    # def ids
-    #   @ids ||= response['hits']['hits'].map {|r| coerce_id r['_id'] }
-    # end
+    def ids
+      @ids ||= response['hits']['hits'].map {|r| coerce_id r['_id'] }
+    end
     #
     # def scores
     #   @scores ||= Hash[results.map {|r| [coerce_id(r['_id']), r['_score']]}]

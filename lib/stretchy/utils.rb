@@ -39,10 +39,10 @@ module Stretchy
       #   ((offset + 1.0) / limit).ceil
       # end
 
-      # # coerces ids to integers, unless they contain non-integers
-      # def coerce_id(id)
-      #   id =~ /^\d+$/ ? id.to_i : id
-      # end
+      # coerces ids to integers, unless they contain non-integers
+      def coerce_id(id)
+        id =~ /^\d+$/ ? id.to_i : id
+      end
 
       # def dotify(hash, prefixes = [])
       #   hash.reduce({}) do |memo, kv|
