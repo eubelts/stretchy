@@ -115,19 +115,19 @@ module Stretchy
     #   end
     # end
     #
-    # def nested(params, path, context = default_context)
-    #   nodes = if context[:filter] && !context[:query]
-    #     params_to_filters(params, context)
-    #   else
-    #     params_to_queries(params, context)
-    #   end
-    #   json  = AndCollector.new(nodes, context).json
-    #
-    #   Node.new({nested: {
-    #     path:   path,
-    #     query:  json
-    #   }}, context)
-    # end
+    def nested(params, path, context = default_context)
+      nodes = if context[:filter] && !context[:query]
+        params_to_filters(params, context)
+      else
+        params_to_queries(params, context)
+      end
+      json  = AndCollector.new(nodes, context).json
+
+      Node.new({nested: {
+        path:   path,
+        query:  json
+      }}, context)
+    end
     #
     # # https://www.elastic.co/guide/en/elasticsearch/guide/current/proximity-relevance.html
     # def fulltext_nodes_from_string(params, context = default_context)

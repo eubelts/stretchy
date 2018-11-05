@@ -57,18 +57,18 @@ module Stretchy
         end
       end
 
-      # def nestify(hash, prefixes = [])
-      #   hash.reduce({}) do |memo, kv|
-      #     key, val = kv
-      #     subprefixes = (prefixes + [key])
-      #     prefix = subprefixes.join('.')
-      #     if val.is_a? Hash
-      #       memo.merge(prefix => nestify(val, subprefixes))
-      #     else
-      #       memo.merge(prefix => val)
-      #     end
-      #   end
-      # end
+      def nestify(hash, prefixes = [])
+        hash.reduce({}) do |memo, kv|
+          key, val = kv
+          subprefixes = (prefixes + [key])
+          prefix = subprefixes.join('.')
+          if val.is_a? Hash
+            memo.merge(prefix => nestify(val, subprefixes))
+          else
+            memo.merge(prefix => val)
+          end
+        end
+      end
     end
 
     extend Methods

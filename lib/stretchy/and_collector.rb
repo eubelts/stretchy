@@ -56,27 +56,27 @@ module Stretchy
       def multicontext?(node_arr)
         Array(node_arr).any? {|n| n.context?(:must_not) || n.context?(:should) }
       end
-      #
-      # def compile_bool(bool_nodes)
-      #   split_nodes = split_nodes_for_bool(bool_nodes)
-      #   refined = bool_ctx.each_with_object(split_nodes) do |k, hash|
-      #     hash[k] = Array(compile_bool(hash[k])) if multicontext? hash[k]
-      #   end
-      #   bool_json = Hash[refined.map{|k,v| [k, v.map(&:as_json)] }]
-      #   Node.new(bool: bool_json)
-      # end
-      #
-      # def bool_ctx
-      #   [:filter, :must_not, :should]
-      # end
-      #
-      # def split_nodes_for_bool(bool_nodes)
-      #   bool_nodes.each_with_object({}) do |n, hash|
-      #     key = bool_ctx.find{|c| n.context? c } || :must
-      #     hash[key] ||= []
-      #     hash[key] << Node.new(n.json, n.context.merge(key => nil))
-      #   end
-      # end
+
+      def compile_bool(bool_nodes)
+        split_nodes = split_nodes_for_bool(bool_nodes)
+        refined = bool_ctx.each_with_object(split_nodes) do |k, hash|
+          hash[k] = Array(compile_bool(hash[k])) if multicontext? hash[k]
+        end
+        bool_json = Hash[refined.map{|k,v| [k, v.map(&:as_json)] }]
+        Node.new(bool: bool_json)
+      end
+
+      def bool_ctx
+        [:filter, :must_not, :should]
+      end
+
+      def split_nodes_for_bool(bool_nodes)
+        bool_nodes.each_with_object({}) do |n, hash|
+          key = bool_ctx.find{|c| n.context? c } || :must
+          hash[key] ||= []
+          hash[key] << Node.new(n.json, n.context.merge(key => nil))
+        end
+      end
 
       # def compile_boost_functions
       #   boost_nodes.map do |n|

@@ -2,7 +2,7 @@
   "game_dev" : {
     "properties" : {
       "coords" : {"type" : "geo_point"},
-      "url_slug" : {"type" : "keyword", "index" : "false"},
+      "url_slug" : {"type" : "keyword", "index" : "true"},
       "games" : {
         "type" : "nested",
         "include_in_parent" : true,

@@ -115,14 +115,14 @@ module Stretchy
     #   add_params params, :filter, :raw_node
     # end
     #
-    # def should(params = {})
-    #   add_params params, :should, :context_nodes
-    # end
-    #
-    # def not(params = {})
-    #   add_params params, :must_not, :context_nodes
-    # end
-    #
+    def should(params = {})
+      add_params params, :should, :context_nodes
+    end
+
+    def not(params = {})
+      add_params params, :must_not, :context_nodes
+    end
+
     # def range(params = {})
     #   add_params params, nil, :range_node
     # end
