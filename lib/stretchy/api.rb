@@ -127,10 +127,11 @@ module Stretchy
       add_params params, nil, :range_node
     end
 
-    # def geo_distance(params = {})
-    #   add_params params, nil, :geo_distance_node
-    # end
-    #
+    def geo_distance(params = {})
+      binding.pry
+      add_params params, nil, :geo_distance_node
+    end
+
     # def boost(params = {}, options = {})
     #   return add_context(:boost) if Utils.is_empty? params
     #
