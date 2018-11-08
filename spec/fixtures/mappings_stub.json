@@ -12,7 +12,7 @@
             "properties" : {
               "source" : {
                 "type" : "keyword",
-                "index" : "false"
+                "index" : "true"
               }
             }
           },

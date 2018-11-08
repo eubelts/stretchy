@@ -98,23 +98,23 @@ module Stretchy
         end
       end
     end
-    #
-    # def params_to_filters(params, context = default_context)
-    #   params.map do |field, val|
-    #     case val
-    #     when Range
-    #       Node.new({range: {field => {gte: val.min, lte: val.max}}}, context)
-    #     when nil
-    #       nil_ctx = context.merge(must_not: true)
-    #       Node.new({exists: {field: field}}, nil_ctx)
-    #     when Hash
-    #       nested(val, field, context)
-    #     else
-    #       Node.new({terms: {field => Array(val)}}, context)
-    #     end
-    #   end
-    # end
-    #
+    
+    def params_to_filters(params, context = default_context)
+      params.map do |field, val|
+        case val
+        when Range
+          Node.new({range: {field => {gte: val.min, lte: val.max}}}, context)
+        when nil
+          nil_ctx = context.merge(must_not: true)
+          Node.new({exists: {field: field}}, nil_ctx)
+        when Hash
+          nested(val, field, context)
+        else
+          Node.new({terms: {field => Array(val)}}, context)
+        end
+      end
+    end
+
     def nested(params, path, context = default_context)
       nodes = if context[:filter] && !context[:query]
         params_to_filters(params, context)
@@ -128,7 +128,7 @@ module Stretchy
         query:  json
       }}, context)
     end
-    
+
     # https://www.elastic.co/guide/en/elasticsearch/guide/current/proximity-relevance.html
     def fulltext_nodes_from_string(params, context = default_context)
       subcontext = context.merge(query: true)

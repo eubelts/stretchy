@@ -77,11 +77,11 @@ module Stretchy
     def ids
       @ids ||= response['hits']['hits'].map {|r| coerce_id r['_id'] }
     end
-    #
-    # def scores
-    #   @scores ||= Hash[results.map {|r| [coerce_id(r['_id']), r['_score']]}]
-    # end
-    #
+
+    def scores
+      @scores ||= Hash[results.map {|r| [coerce_id(r['_id']), r['_score']]}]
+    end
+
     # def explanations
     #   @explanations ||= Hash[results.map {|r|
     #     [coerce_id(r['_id']), r['_explanation']]

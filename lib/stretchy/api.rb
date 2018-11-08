@@ -79,12 +79,12 @@ module Stretchy
     #   add_body highlight: params
     # end
     #
-    # def where(params = {})
-    #   subcontext = {filter: true}
-    #   subcontext[:nested] = params.delete(:nested) if params[:nested]
-    #   add_params params, subcontext, :context_nodes
-    # end
-    #
+    def where(params = {})
+      subcontext = {filter: true}
+      subcontext[:nested] = params.delete(:nested) if params[:nested]
+      add_params params, subcontext, :context_nodes
+    end
+
     def match(params = {})
       if params.is_a? Hash
         subcontext = {query: true}
@@ -110,11 +110,11 @@ module Stretchy
     def query(params = {})
       add_params params, :query, :raw_node
     end
-    #
-    # def filter(params = {})
-    #   add_params params, :filter, :raw_node
-    # end
-    #
+
+    def filter(params = {})
+      add_params params, :filter, :raw_node
+    end
+
     def should(params = {})
       add_params params, :should, :context_nodes
     end

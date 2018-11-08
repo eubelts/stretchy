@@ -52,19 +52,19 @@ RSpec.shared_context 'integration specs', :integration do
     expect(ids).to      include(found['id'])
     expect(ids).not_to  include(not_found['id'])
   end
-  #
-  # def check_filter(a)
-  #   check_query(a)
-  #   scores = api.scores.values
-  #   expect(scores.all?{|s| s == scores.first}).to eq(true)
-  # end
-  #
+
+  def check_filter(a)
+    check_query(a)
+    scores = api.scores.values
+    expect(scores.all?{|s| s == scores.first}).to eq(true)
+  end
+
   # def check_boost(a)
   #   scores = a.scores
   #   expect(scores[found['id']]).to be > scores[not_found['id']]
   # end
 end
-#
-# def fixture(name)
-#   return FIXTURES[name] if FIXTURES[name]
-# end
+
+def fixture(name)
+  return FIXTURES[name] if FIXTURES[name]
+end
