@@ -128,7 +128,6 @@ module Stretchy
     end
 
     def geo_distance(params = {})
-      binding.pry
       add_params params, nil, :geo_distance_node
     end
 

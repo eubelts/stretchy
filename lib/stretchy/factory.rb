@@ -168,7 +168,6 @@ module Stretchy
 
     # https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-geo-distance-filter.html
     def geo_distance_node(params = {}, context = default_context)
-      binding.pry
       Node.new({geo_distance: params}, context)
     end
 
